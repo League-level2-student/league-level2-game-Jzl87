@@ -6,34 +6,21 @@ import javax.swing.JPanel;
 public class PenteRunner {
 
 	public static JFrame gameFrame = new JFrame("Pente");
-	public static JPanel panel;
-	private static final int MENU = 0;
-	private static final int GAME = 1;
-	private static final int END = 2;
+	public static JPanel mainPanel = new JPanel();
+	public static final int MENU = 0;
+	public static final int GAME = 1;
+	public static final int END = 2;
 
-	public static int currentState = 2;
-	
+	public static int currentState = 0;
+
 	public static void main(String[] args) {
 		gameFrame.setVisible(true);
-		setup();
+		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-	}
-	
-	public static void setup() {
+		gameFrame.add(mainPanel);
+		mainPanel.add(new Panel(currentState));
 		
-		panel = new JPanel();
-
-		GameWindow gameWindow;
-		GameOverWindow gameOverWindow;
-
-		if (currentState == GAME) {
-			gameWindow = new GameWindow(gameFrame, panel);
-			gameWindow.buttonSetup();
-			gameWindow.addButtons(gameWindow.getPlayableButton());
-		} else if (currentState == END){
-			gameOverWindow = new GameOverWindow(gameFrame, panel);
-
-		}
-
+		gameFrame.pack();
+		
 	}
 }

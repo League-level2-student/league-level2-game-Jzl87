@@ -23,9 +23,8 @@ public class Button extends JButton {
 	
 
 	// BUTTON CREATION CONSTRUCTOR
-	public Button(boolean buttonLocked, int buttonID, Color buttonColor) {
+	public Button(boolean buttonLocked, Color buttonColor) {
 		this.buttonLocked = buttonLocked;
-		this.buttonID = buttonID;
 		this.buttonColor = buttonColor;
 		buttonSize = 30;
 		setSize(buttonSize, buttonSize);
@@ -72,7 +71,7 @@ public class Button extends JButton {
 		if (currentButtonID > 900) {
 			return false;
 		} else {
-		return Game.game.getPlayableButton(currentButtonID).getColor() == Game.red;
+		return Panel.game.getPlayableButton(currentButtonID).getColor() == Panel.red;
 		}
 	}
 
@@ -80,7 +79,7 @@ public class Button extends JButton {
 		if (currentButtonID > 900) {
 			return false;
 		} else {
-		return Game.game.getPlayableButton(currentButtonID).getColor() == Game.blue;
+		return Panel.game.getPlayableButton(currentButtonID).getColor() == Panel.blue;
 		}
 	}
 	
@@ -102,19 +101,19 @@ public class Button extends JButton {
 	}
 
 	public void resetButtonCapture(int CBID, int direction) {
-		Game.game.getPlayableButton(CBID + direction).setButtonLocked(false);
-		Game.game.getPlayableButton(CBID + direction * 2).setButtonLocked(false);
+		Panel.game.getPlayableButton(CBID + direction).setButtonLocked(false);
+		Panel.game.getPlayableButton(CBID + direction * 2).setButtonLocked(false);
 
-		Game.game.getPlayableButton(CBID + direction).setButtonColor(black);
-		Game.game.getPlayableButton(CBID + direction * 2).setButtonColor(black);
+		Panel.game.getPlayableButton(CBID + direction).setButtonColor(black);
+		Panel.game.getPlayableButton(CBID + direction * 2).setButtonColor(black);
 
 	}
 
 	public void addCapture(boolean isPlayerOne) {
 		if (isPlayerOne) {
-			Game.captureCounter1++;
+			Panel.captureCounter1++;
 		} else {
-			Game.captureCounter2++;
+			Panel.captureCounter2++;
 		}
 	}
 
